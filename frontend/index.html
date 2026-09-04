@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>RecoverAI Dashboard</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+
+    <h1>RecoverAI</h1>
+
+    <p>
+        Intelligent Payment Recovery System
+    </p>
+
+</header>
+
+
+<main>
+
+    <!-- ================================
+         AI Recovery Insights
+         ================================ -->
+
+    <section class="ai-insights">
+
+        <div class="ai-insights-header">
+
+            <div>
+
+                <h2>🤖 AI Recovery Insights</h2>
+
+                <p>
+                    Intelligent recommendations based on transaction patterns
+                </p>
+
+            </div>
+
+            <span class="ai-status">
+                ● AI Analysis Active
+            </span>
+
+        </div>
+
+
+        <div class="insights-grid">
+
+            <div class="insight-card">
+
+                <div class="insight-icon">
+                    ⚠️
+                </div>
+
+                <div class="insight-content">
+
+                    <h3>
+                        Failed Payment Pattern
+                    </h3>
+
+                    <p id="failureInsight">
+                        Analyzing payment failure patterns...
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="insight-card">
+
+                <div class="insight-icon">
+                    🎯
+                </div>
+
+                <div class="insight-content">
+
+                    <h3>
+                        High Priority Recovery
+                    </h3>
+
+                    <p id="priorityInsight">
+                        Analyzing high-priority transactions...
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="insight-card">
+
+                <div class="insight-icon">
+                    💡
+                </div>
+
+                <div class="insight-content">
+
+                    <h3>
+                        Recommended Strategy
+                    </h3>
+
+                    <p id="strategyInsight">
+                        Generating recovery strategy...
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================================
+         Dashboard Statistics
+         ================================ -->
+
+    <section class="stats">
+
+        <div class="card">
+
+            <h3>
+                Total Transactions
+            </h3>
+
+            <p id="totalTransactions">
+                0
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <h3>
+                Failed Payments
+            </h3>
+
+            <p id="failedTransactions">
+                0
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <h3>
+                Recovered Payments
+            </h3>
+
+            <p id="recoveredTransactions">
+                0
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <h3>
+                Recovery Rate
+            </h3>
+
+            <p id="recoveryRate">
+                0%
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================================
+         Transaction Analysis
+         ================================ -->
+
+    <section class="transactions">
+
+        <h2>
+            Transaction Analysis
+        </h2>
+
+
+        <!-- Search and Filters -->
+
+        <div class="filters">
+
+            <div class="search-box">
+
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="Search transaction ID..."
+                >
+
+            </div>
+
+
+            <div class="filter-box">
+
+                <select id="statusFilter">
+
+                    <option value="all">
+                        All Status
+                    </option>
+
+                    <option value="success">
+                        Success
+                    </option>
+
+                    <option value="failed">
+                        Failed
+                    </option>
+
+                    <option value="abandoned">
+                        Abandoned
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="filter-box">
+
+                <select id="priorityFilter">
+
+                    <option value="all">
+                        All Priority
+                    </option>
+
+                    <option value="high">
+                        High
+                    </option>
+
+                    <option value="medium">
+                        Medium
+                    </option>
+
+                    <option value="low">
+                        Low
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <button
+                id="clearFilters"
+                class="clear-button">
+
+                Clear Filters
+
+            </button>
+
+        </div>
+
+
+        <!-- ================================
+             Transaction Table
+             ================================ -->
+
+        <div class="table-container">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            Transaction ID
+                        </th>
+
+                        <th>
+                            Amount
+                        </th>
+
+                        <th>
+                            Status
+                        </th>
+
+                        <th>
+                            Failure Reason
+                        </th>
+
+                        <th>
+                            Action
+                        </th>
+
+                        <th>
+                            Priority
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody id="transactionTable">
+
+                    <!-- Transactions inserted by JavaScript -->
+
+                </tbody>
+
+            </table>
+
+
+            <!-- ================================
+                 Transaction Details
+                 ================================ -->
+
+            <div
+                id="transactionDetails"
+                class="transaction-details"
+            >
+
+                <div class="details-header">
+
+                    <div>
+
+                        <h3>
+                            Transaction Details
+                        </h3>
+
+                        <p id="detailsSubtitle">
+                            Select a transaction to view details
+                        </p>
+
+                    </div>
+
+
+                    <button
+                        id="closeDetails"
+                        class="close-details"
+                    >
+                        ×
+                    </button>
+
+                </div>
+
+
+                <div class="details-grid">
+
+
+                    <div class="detail-item">
+
+                        <span>
+                            Transaction ID
+                        </span>
+
+                        <strong id="detailTransactionId">
+                            —
+                        </strong>
+
+                    </div>
+
+
+                    <div class="detail-item">
+
+                        <span>
+                            Customer ID
+                        </span>
+
+                        <strong id="detailCustomerId">
+                            —
+                        </strong>
+
+                    </div>
+
+
+                    <div class="detail-item">
+
+                        <span>
+                            Amount
+                        </span>
+
+                        <strong id="detailAmount">
+                            —
+                        </strong>
+
+                    </div>
+
+
+                    <div class="detail-item">
+
+                        <span>
+                            Status
+                        </span>
+
+                        <strong id="detailStatus">
+                            —
+                        </strong>
+
+                    </div>
+
+
+                    <div class="detail-item">
+
+                        <span>
+                            Failure Reason
+                        </span>
+
+                        <strong id="detailFailureReason">
+                            —
+                        </strong>
+
+                    </div>
+
+
+                    <div class="detail-item">
+
+                        <span>
+                            Attempts
+                        </span>
+
+                        <strong id="detailAttempts">
+                            —
+                        </strong>
+
+                    </div>
+
+
+                    <div class="detail-item">
+
+                        <span>
+                            Recovery Status
+                        </span>
+
+                        <strong id="detailRecoveryStatus">
+                            —
+                        </strong>
+
+                    </div>
+
+
+                    <div class="detail-item">
+
+                        <span>
+                            Priority
+                        </span>
+
+                        <strong id="detailPriority">
+                            —
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ================================
+                     AI Recovery Recommendation
+                     ================================ -->
+
+                <div class="recovery-recommendation">
+
+                    <span>
+                        AI Recovery Recommendation
+                    </span>
+
+                    <p id="detailAction">
+                        —
+                    </p>
+
+                </div>
+
+
+                <!-- ================================
+                     Recovery Action
+                     ================================ -->
+
+                <div class="recovery-action">
+
+                    <button
+                        id="recoveryActionButton"
+                        type="button"
+                    >
+                        Execute Recovery Action
+                    </button>
+
+                    <p id="actionMessage"></p>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================================
+         Recovery Analytics
+         ================================ -->
+
+    <section class="analytics">
+
+        <div class="analytics-header">
+
+            <div>
+
+                <h2>
+                    Recovery Analytics
+                </h2>
+
+                <p>
+                    Overview of payment performance and recovery insights
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="analytics-grid">
+
+
+            <div class="analytics-card">
+
+                <h3>
+                    Payment Status
+                </h3>
+
+                <div
+                    id="statusChart"
+                    class="chart"
+                >
+
+                    <!-- Chart generated by JavaScript -->
+
+                </div>
+
+            </div>
+
+
+            <div class="analytics-card">
+
+                <h3>
+                    Priority Distribution
+                </h3>
+
+                <div
+                    id="priorityChart"
+                    class="chart"
+                >
+
+                    <!-- Chart generated by JavaScript -->
+
+                </div>
+
+            </div>
+
+
+            <div class="analytics-card analytics-wide">
+
+                <h3>
+                    Failure Reason Analysis
+                </h3>
+
+                <div
+                    id="failureChart"
+                    class="chart"
+                >
+
+                    <!-- Chart generated by JavaScript -->
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
